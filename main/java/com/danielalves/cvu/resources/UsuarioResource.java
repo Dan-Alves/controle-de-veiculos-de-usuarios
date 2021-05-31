@@ -36,14 +36,15 @@ public class UsuarioResource {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Usuario obj) {
+	public ResponseEntity<Usuario> insert(@RequestBody Usuario obj) {
 		
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}")
 				.buildAndExpand(obj.getId())
 				.toUri();
-		return ResponseEntity.created(uri).build();
+		ResponseEntity.created(uri).build();
+		return ResponseEntity.ok().body(obj);
 				
 	}
 	

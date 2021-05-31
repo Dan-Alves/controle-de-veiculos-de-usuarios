@@ -12,6 +12,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Usuario implements Serializable {
 
@@ -27,15 +30,18 @@ public class Usuario implements Serializable {
 	
 	@Column(unique=true)
 	private String cpf;
-	private Date nascimento;
 	
+	@JsonFormat(pattern="dd/MM/yyyy HH:mm")
+	private Date nascimento;
+
 	@OneToMany(mappedBy="usuario")
-	private List<Veiculo> veiculo = new ArrayList<>();
+	private List<Veiculo> veiculos = new ArrayList<>();
+	//contructors, getters, setters e hashcode equals
 	
 	public Usuario() {
 		
 	}
-	
+		
 	public Usuario(Integer id, String nome, String email, String cpf, Date nascimento) {
 		super();
 		this.id = id;
@@ -43,6 +49,20 @@ public class Usuario implements Serializable {
 		this.email = email;
 		this.cpf = cpf;
 		this.nascimento = nascimento;
+	}
+	
+	public Usuario(Integer id, String nome) {
+		super();
+		this.id = id;
+		this.nome = nome;
+	}
+
+	public List<Veiculo> getVeiculos() {
+		return veiculos;
+	}
+
+	public void setVeiculos(List<Veiculo> veiculos) {
+		this.veiculos = veiculos;
 	}
 
 	public Integer getId() {

@@ -1,6 +1,7 @@
 package com.danielalves.cvu.domain;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,35 +10,54 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Veiculo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+		
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String marca;
 	private String modelo;
-	private Integer ano;
+	private String ano;
+	private boolean rodizioAtivo;
 	
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="usuario_id")
 	private Usuario usuario;
+	//contructors, getters, setters, hashcode equals
+	//e verificaRodizio
+
+	public Veiculo(Integer id, String marca, String modelo, String ano, Usuario usuario) {
+		super();
+		this.id = id;
+		this.marca = marca;
+		this.modelo = modelo;
+		this.ano = ano;
+		this.usuario = usuario;
+	}
 	
-	public Veiculo(Integer id, String marca, String modelo, Integer ano) {
+	public Veiculo(Integer id, String marca, String modelo, String ano) {
 		super();
 		this.id = id;
 		this.marca = marca;
 		this.modelo = modelo;
 		this.ano = ano;
 	}
-	
+
 	public Veiculo() {
 		
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public Integer getId() {
@@ -47,7 +67,7 @@ public class Veiculo implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
+	
 	public String getMarca() {
 		return marca;
 	}
@@ -64,12 +84,20 @@ public class Veiculo implements Serializable {
 		this.modelo = modelo;
 	}
 
-	public Integer getAno() {
+	public String getAno() {
 		return ano;
 	}
 
-	public void setAno(Integer ano) {
+	public void setAno(String ano) {
 		this.ano = ano;
+	}
+
+	public boolean isRodizioAtivo() {
+		return rodizioAtivo;
+	}
+
+	public void setRodizioAtivo(boolean rodizioAtivo) {
+		this.rodizioAtivo = rodizioAtivo;
 	}
 
 	@Override
@@ -95,6 +123,27 @@ public class Veiculo implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}	
+	
+	public static void verificaRodizio(Veiculo v) {
+		
+		String day = LocalDate.now().getDayOfWeek().name();
+		char placaFinal = (v.getAno().charAt(3));
+		
+		if((placaFinal == '0' || placaFinal == '1') && day.equals("MONDAY")) {
+			v.setRodizioAtivo(true);
+		} else if((placaFinal == '2' || placaFinal == '3') && day.equals("TUESDAY")) {
+			v.setRodizioAtivo(true);
+		} else if((placaFinal == '4' || placaFinal == '5') && day.equals("WEDNESDAY")) {
+			v.setRodizioAtivo(true);
+		} else if((placaFinal == '6' || placaFinal == '7') && day.equals("THURSDAY")) {
+			v.setRodizioAtivo(true);
+		} else if((placaFinal == '8' || placaFinal == '9') && day.equals("FRIDAY")) {
+			v.setRodizioAtivo(true);
+		} else {
+			v.setRodizioAtivo(false);
+		}
+		
 	}
-
+		
 }
