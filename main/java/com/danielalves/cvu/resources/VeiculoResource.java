@@ -1,6 +1,8 @@
 package com.danielalves.cvu.resources;
 
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.danielalves.cvu.domain.Veiculo;
+import com.danielalves.cvu.dto.VeiculoDTO;
 import com.danielalves.cvu.services.VeiculoService;
 
 @RestController
@@ -39,6 +42,17 @@ public class VeiculoResource {
 				.buildAndExpand(obj.getId())
 				.toUri();
 		return ResponseEntity.created(uri).build();
+				
+	}
+	
+	@RequestMapping(method=RequestMethod.GET)
+	public ResponseEntity<List<VeiculoDTO>> findAll() {
+		
+		List<Veiculo> list = service.findAll();
+		
+		List<VeiculoDTO> listDto = list.stream().map(obj -> new VeiculoDTO(obj)).collect(Collectors.toList());
+		
+		return ResponseEntity.ok().body(listDto);
 				
 	}
 

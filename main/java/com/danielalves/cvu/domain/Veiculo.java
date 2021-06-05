@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.sun.istack.NotNull;
 
 @Entity
 public class Veiculo implements Serializable {
@@ -22,6 +22,8 @@ public class Veiculo implements Serializable {
 	private Integer id;
 	private String marca;
 	private String modelo;
+	
+	@NotNull
 	private String ano;
 	private boolean rodizioAtivo;
 	

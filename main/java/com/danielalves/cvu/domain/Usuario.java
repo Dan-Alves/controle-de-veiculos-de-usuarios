@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Usuario implements Serializable {
@@ -31,7 +30,7 @@ public class Usuario implements Serializable {
 	@Column(unique=true)
 	private String cpf;
 	
-	@JsonFormat(pattern="dd/MM/yyyy HH:mm")
+	@JsonFormat(pattern="dd/MM/yyyy")
 	private Date nascimento;
 
 	@OneToMany(mappedBy="usuario")

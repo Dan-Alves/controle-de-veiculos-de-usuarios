@@ -43,8 +43,7 @@ public class UsuarioResource {
 				.path("/{id}")
 				.buildAndExpand(obj.getId())
 				.toUri();
-		ResponseEntity.created(uri).build();
-		return ResponseEntity.ok().body(obj);
+		return ResponseEntity.created(uri).build();
 				
 	}
 	

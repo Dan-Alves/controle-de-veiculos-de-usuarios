@@ -24,12 +24,16 @@ public class UsuarioService {
 	public Usuario find(Integer id) {
 		Optional<Usuario> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
-			"Objeto não encontrado! Id: " + id + ", Type: " + Usuario.class.getName()));
+			"Objeto não encontrado! Id: " + id));
 	}
 	
 	public Usuario insert(Usuario obj) {
-		obj.setId(null);
-		return repo.save(obj);
+		try {
+			obj.setId(null);
+			return repo.save(obj);
+		} catch(DataIntegrityViolationException e) {
+			throw new DataIntegrityException("Não foi possível inserir usuário!");
+		}
 	}
 	
 	public Usuario update(Usuario obj) {
@@ -42,7 +46,7 @@ public class UsuarioService {
 		try {
 			repo.deleteById(id);
 		} catch(DataIntegrityViolationException e) {
-			throw new DataIntegrityException("Não foi possível deletar");
+			throw new DataIntegrityException("Não foi possível deletar usuário!");
 		}
 		
 	}

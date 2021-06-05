@@ -1,17 +1,11 @@
 package com.danielalves.cvu.services;
 
-import java.net.URI;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.danielalves.cvu.domain.Usuario;
 import com.danielalves.cvu.domain.Veiculo;
 import com.danielalves.cvu.repositories.VeiculoRepository;
 import com.danielalves.cvu.services.exceptions.ObjectNotFoundException;
@@ -21,18 +15,25 @@ public class VeiculoService {
 	
 	@Autowired
 	private VeiculoRepository repo;
+	
+//	@Autowired
+//	private VeiculoClient veiculoClient;
 
 	public Veiculo find(Integer id) {
 		Optional<Veiculo> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
-			"Objeto não encontrado! Id: " + id + ", Type: " + Veiculo.class.getName()));
+			"Objeto não encontrado! Id: " + id));
 	}
 	
 	public Veiculo insert(Veiculo obj) {
 		obj.setId(null);
+		Veiculo.verificaRodizio(obj);
 		return repo.save(obj);
 	}
 	
+	public List<Veiculo> findAll() {
+		return repo.findAll();
+	}
 	
 
 }

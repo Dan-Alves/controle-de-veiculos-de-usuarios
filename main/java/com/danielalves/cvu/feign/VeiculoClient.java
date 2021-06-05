@@ -2,26 +2,29 @@ package com.danielalves.cvu.feign;
 
 import java.util.List;
 
-import com.danielalves.cvu.domain.Veiculo;
-import com.danielalves.cvu.resources.VeiculoResource;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
-import feign.*;
-import feign.Feign;
-import feign.Headers;
-import feign.Logger;
-import feign.Param;
-import feign.RequestLine;
-
+@FeignClient(url="https://parallelum.com.br/fipe/api/v1", name="veiculo")
 public interface VeiculoClient {
-    @RequestLine("GET /{isbn}")
-    VeiculoResource findByIsbn(@Param("isbn") String isbn);
-
-    @RequestLine("GET")
-    List<VeiculoResource> findAll();
-
-    @RequestLine("POST")
-    @Headers("Content-Type: application/json")
-    void create(Veiculo veiculo);
-    
-   
+  
+	 @GetMapping("/{tipo}/marcas")
+	 public List<Marcas> getMarcas(@PathVariable("tipo") String tipo);
+	 
+	 @GetMapping("/{tipo}/marcas/{codMarca}/modelos")
+	 public List<Modelos> getModelos(@PathVariable("tipo") String tipo, 
+			 @PathVariable("codMarca") String codMarca);
+	 
+	 @GetMapping("/{tipo}/marcas/{codMarca}/modelos/{codModelo}/anos/")
+	 public List<Anos> getAnos(@PathVariable("tipo") String tipo, 
+			 @PathVariable("codMarca") String codMarca, 
+			 @PathVariable("codModelo") String codModelo);
+	 
+	 @GetMapping("/{tipo}/marcas/{codMarca}/modelos/{codModelo}/anos/{codAno}")
+	 public List<Infos> getInfos(@PathVariable("tipo") String tipo, 
+			 @PathVariable("codMarca") String codMarca, 
+			 @PathVariable("codModelo") String codModelo, 
+			 @PathVariable("codAno") String codAno);
+ 
 }
