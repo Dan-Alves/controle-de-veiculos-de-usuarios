@@ -22,7 +22,7 @@ public interface VeiculoClient {
 			 @PathVariable("codModelo") String codModelo);
 	 
 	 @GetMapping("/{tipo}/marcas/{codMarca}/modelos/{codModelo}/anos/{codAno}")
-	 public List<Infos> getInfos(@PathVariable("tipo") String tipo, 
+	 Infos getInfos(@PathVariable("tipo") String tipo, 
 			 @PathVariable("codMarca") String codMarca, 
 			 @PathVariable("codModelo") String codModelo, 
 			 @PathVariable("codAno") String codAno);
