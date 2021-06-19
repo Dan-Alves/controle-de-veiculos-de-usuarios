@@ -3,6 +3,7 @@ package com.danielalves.cvu.domain;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,16 +11,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.sun.istack.NotNull;
 
 @Entity
 public class Veiculo implements Serializable {
-
+	
 	private static final long serialVersionUID = 1L;
-		
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	private String marca;
 	private String modelo;
 	
@@ -27,49 +29,32 @@ public class Veiculo implements Serializable {
 	private String ano;
 	private boolean rodizioAtivo;
 	
-	@ManyToOne
+	@JsonBackReference
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="usuario_id")
 	private Usuario usuario;
-	//contructors, getters, setters, hashcode equals
-	//e verificaRodizio
-
-	public Veiculo(Integer id, String marca, String modelo, String ano, Usuario usuario) {
-		super();
-		this.id = id;
-		this.marca = marca;
-		this.modelo = modelo;
-		this.ano = ano;
-		this.usuario = usuario;
-	}
-	
-	public Veiculo(Integer id, String marca, String modelo, String ano) {
-		super();
-		this.id = id;
-		this.marca = marca;
-		this.modelo = modelo;
-		this.ano = ano;
-	}
 
 	public Veiculo() {
-		
+		super();
 	}
 	
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
+	public Veiculo(Long id, String marca, String modelo, String ano, Usuario usuario) {
+		super();
+		this.id = id;
+		this.marca = marca;
+		this.modelo = modelo;
+		this.ano = ano;
 		this.usuario = usuario;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getMarca() {
 		return marca;
 	}
@@ -102,6 +87,14 @@ public class Veiculo implements Serializable {
 		this.rodizioAtivo = rodizioAtivo;
 	}
 
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -125,9 +118,9 @@ public class Veiculo implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
 	
-	public static void verificaRodizio(Veiculo v) {
+public static void verificaRodizio(Veiculo v) {
 		
 		String day = LocalDate.now().getDayOfWeek().name();
 		char placaFinal = (v.getAno().charAt(3));
@@ -147,5 +140,5 @@ public class Veiculo implements Serializable {
 		}
 		
 	}
-		
+	
 }

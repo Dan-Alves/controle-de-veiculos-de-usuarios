@@ -2,7 +2,6 @@ package com.danielalves.cvu.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,7 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Usuario implements Serializable {
@@ -21,54 +21,38 @@ public class Usuario implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	private String nome;
 	
+	@JsonIgnore
 	@Column(unique=true)
 	private String email;
 	
+	@JsonIgnore
 	@Column(unique=true)
 	private String cpf;
-	
-	@JsonFormat(pattern="dd/MM/yyyy")
-	private Date nascimento;
+	private String nascimento;
 
+	@JsonManagedReference
 	@OneToMany(mappedBy="usuario")
 	private List<Veiculo> veiculos = new ArrayList<>();
-	//contructors, getters, setters e hashcode equals
-	
-	public Usuario() {
-		
-	}
-		
-	public Usuario(Integer id, String nome, String email, String cpf, Date nascimento) {
+
+	public Usuario(Long id, String nome, String nascimento) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.email = email;
-		this.cpf = cpf;
 		this.nascimento = nascimento;
 	}
-	
-	public Usuario(Integer id, String nome) {
+
+	public Usuario() {
 		super();
-		this.id = id;
-		this.nome = nome;
 	}
 
-	public List<Veiculo> getVeiculos() {
-		return veiculos;
-	}
-
-	public void setVeiculos(List<Veiculo> veiculos) {
-		this.veiculos = veiculos;
-	}
-
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -80,6 +64,14 @@ public class Usuario implements Serializable {
 		this.nome = nome;
 	}
 
+	public List<Veiculo> getVeiculos() {
+		return veiculos;
+	}
+
+	public void setVeiculos(List<Veiculo> veiculos) {
+		this.veiculos = veiculos;
+	}
+	
 	public String getEmail() {
 		return email;
 	}
@@ -96,11 +88,11 @@ public class Usuario implements Serializable {
 		this.cpf = cpf;
 	}
 
-	public Date getNascimento() {
+	public String getNascimento() {
 		return nascimento;
 	}
 
-	public void setNascimento(Date nascimento) {
+	public void setNascimento(String nascimento) {
 		this.nascimento = nascimento;
 	}
 

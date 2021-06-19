@@ -21,7 +21,7 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository repo;
 
-	public Usuario find(Integer id) {
+	public Usuario find(Long id) {
 		Optional<Usuario> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 			"Objeto não encontrado! Id: " + id));
@@ -41,7 +41,7 @@ public class UsuarioService {
 		return repo.save(obj);
 	}
 	
-	public void delete(Integer id) {
+	public void delete(Long id) {
 		find(id);
 		try {
 			repo.deleteById(id);

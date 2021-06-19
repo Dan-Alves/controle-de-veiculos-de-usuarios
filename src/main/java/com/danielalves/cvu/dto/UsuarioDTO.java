@@ -7,7 +7,7 @@ import com.danielalves.cvu.domain.Usuario;
 public class UsuarioDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private Integer id;
+	private Long id;
 	private String nome;
 	
 	public UsuarioDTO() {
@@ -19,11 +19,11 @@ public class UsuarioDTO implements Serializable {
 		nome = obj.getNome();
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

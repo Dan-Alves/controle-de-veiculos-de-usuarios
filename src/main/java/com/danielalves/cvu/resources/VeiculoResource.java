@@ -25,7 +25,7 @@ public class VeiculoResource {
 	private VeiculoService service;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<Veiculo> find(@PathVariable Integer id) {
+	public ResponseEntity<Veiculo> find(@PathVariable Long id) {
 		
 		Veiculo obj = service.find(id);
 		

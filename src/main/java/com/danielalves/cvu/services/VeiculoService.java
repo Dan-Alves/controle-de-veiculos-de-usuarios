@@ -19,7 +19,7 @@ public class VeiculoService {
 //	@Autowired
 //	private VeiculoClient veiculoClient;
 
-	public Veiculo find(Integer id) {
+	public Veiculo find(Long id) {
 		Optional<Veiculo> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 			"Objeto não encontrado! Id: " + id));
@@ -27,7 +27,7 @@ public class VeiculoService {
 	
 	public Veiculo insert(Veiculo obj) {
 		obj.setId(null);
-		Veiculo.verificaRodizio(obj);
+		//Veiculo.verificaRodizio(obj);
 		return repo.save(obj);
 	}
 	
