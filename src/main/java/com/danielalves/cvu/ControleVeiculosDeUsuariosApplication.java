@@ -34,13 +34,12 @@ public class ControleVeiculosDeUsuariosApplication implements CommandLineRunner 
 		Usuario u1 = new Usuario(null, "João", "28/02/1994");
 		Veiculo v1 = new Veiculo(null, "Honda", "Fit", "2011", u1);
 		Veiculo v2 = new Veiculo(null, "Fiat", "Uno", "2012", u1);
-		Veiculo v3 = new Veiculo(null, "Ford", "Ka", "2014", u1);
 			
 		//Associação
-		u1.getVeiculos().addAll(Arrays.asList(v1, v2, v3));
+		u1.getVeiculos().addAll(Arrays.asList(v1, v2));
 				
 		//Salvando
-		veiculoRepository.saveAll(Arrays.asList(v1, v2, v3));
+		veiculoRepository.saveAll(Arrays.asList(v1, v2));
 		usuarioRepository.saveAll(Arrays.asList(u1));
 		
 

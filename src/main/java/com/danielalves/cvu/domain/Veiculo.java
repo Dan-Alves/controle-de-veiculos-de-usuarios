@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 @Entity
@@ -27,6 +28,8 @@ public class Veiculo implements Serializable {
 	
 	@NotNull
 	private String ano;
+	
+	@JsonIgnoreProperties
 	private boolean rodizioAtivo;
 	
 	@JsonBackReference

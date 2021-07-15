@@ -16,7 +16,7 @@ public class VeiculoDTO implements Serializable {
 	
 	public VeiculoDTO(Veiculo obj) {
 		id = obj.getId();
-		//nome = obj.getModelo();
+		nome = obj.getModelo();
 	}
 
 	public Long getId() {

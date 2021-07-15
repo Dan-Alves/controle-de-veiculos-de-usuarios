@@ -30,7 +30,7 @@ public class UsuarioResource {
 	public ResponseEntity<Usuario> find(@PathVariable Long id) {
 		
 		Usuario obj = service.find(id);
-		
+
 		return ResponseEntity.ok().body(obj);
 				
 	}

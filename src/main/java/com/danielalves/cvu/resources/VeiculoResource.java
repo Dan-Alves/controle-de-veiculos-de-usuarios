@@ -28,15 +28,15 @@ public class VeiculoResource {
 	public ResponseEntity<Veiculo> find(@PathVariable Long id) {
 		
 		Veiculo obj = service.find(id);
-		
+		Veiculo.verificaRodizio(obj);
 		return ResponseEntity.ok().body(obj);
 				
 	}
 	
-	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Veiculo obj) {
+	@RequestMapping(value="/{usuarioId}", method=RequestMethod.POST)
+	public ResponseEntity<Void> insert(@RequestBody Veiculo obj, @PathVariable Long usuarioId) {
 		
-		obj = service.insert(obj);
+		obj = service.insert(obj, usuarioId);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}")
 				.buildAndExpand(obj.getId())
