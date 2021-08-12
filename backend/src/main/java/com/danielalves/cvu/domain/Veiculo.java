@@ -123,7 +123,7 @@ public class Veiculo implements Serializable {
 		return true;
 	}
 	
-public static void verificaRodizio(Veiculo v) {
+	public static void verificaRodizio(Veiculo v) {
 		
 		String day = LocalDate.now().getDayOfWeek().name();
 		char placaFinal = (v.getAno().charAt(3));
