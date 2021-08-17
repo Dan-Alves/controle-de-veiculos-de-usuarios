@@ -15,10 +15,14 @@ export class VeiculoReadComponent implements OnInit {
   constructor(private veiculoService: VeiculoService) { }
 
   ngOnInit(): void {
+    this.findMarcas();
+  }
+
+  findMarcas() {
     this.veiculoService.findAllMarcasByType('carros')
-      .subscribe(marcas => {
-        this.marcas = marcas
-      })
+    .subscribe(marcas => {
+      this.marcas = marcas
+    })
   }
 
 }
