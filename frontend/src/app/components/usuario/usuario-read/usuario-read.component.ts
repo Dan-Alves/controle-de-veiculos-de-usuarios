@@ -10,12 +10,12 @@ import { Usuario } from '../usuario.model';
 export class UsuarioReadComponent implements OnInit {
 
   usuarios!: Usuario[];
-  displayedColumns = ['id', 'nome', 'email', 'cpf', 'telefone', 'nascimento', 'action']
+  displayedColumns = ['nome', 'email', 'cpf', 'telefone', 'nascimento', 'action']
 
   constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
-    this.usuarioService.read()
+    this.usuarioService.findAll()
       .subscribe(usuarios => {
         this.usuarios = usuarios
       })

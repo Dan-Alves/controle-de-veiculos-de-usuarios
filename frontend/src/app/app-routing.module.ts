@@ -1,3 +1,4 @@
+import { VeiculoFipeComponent } from './views/veiculo-fipe/veiculo-fipe.component';
 import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
 import { UsuarioCrudComponent } from './views/usuario-crud/usuario-crud.component';
 import { HomeComponent } from './views/home/home.component';
@@ -16,7 +17,20 @@ const routes: Routes = [
   {
     path: "usuarios/create",
     component: UsuarioCreateComponent
+  },
+  {
+    path: "veiculos",
+    component: VeiculoFipeComponent
   }
+
+  // {
+  //   path: "usuarios/delete/:id",
+  //   // component: UsuarioDeleteComponent
+  // },
+  // {
+  //   path: "usuarios/update/:id",
+  //   // component: UsuarioUpdateComponent
+  // }
 ];
 
 @NgModule({

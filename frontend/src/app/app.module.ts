@@ -1,3 +1,5 @@
+import { VeiculoFipeComponent } from './views/veiculo-fipe/veiculo-fipe.component';
+import { VeiculoReadComponent } from './components/veiculo/veiculo-read/veiculo-read.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -29,6 +31,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 
+import { registerLocaleData } from '@angular/common';
+import localeBR from '@angular/common/locales/br';
+
+registerLocaleData(localeBR);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +45,9 @@ import { MatSortModule } from '@angular/material/sort';
     HomeComponent,
     UsuarioCrudComponent,
     UsuarioCreateComponent,
-    UsuarioReadComponent
+    UsuarioReadComponent,
+    VeiculoReadComponent,
+    VeiculoFipeComponent
   ],
   imports: [
     BrowserModule,

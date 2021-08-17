@@ -1,15 +1,15 @@
-import { Usuario } from './usuario.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
+import { VeiculoMarcas } from './marcas.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
+export class VeiculoService {
 
-  baseUrl = "http://localhost:8080/usuarios"
+  baseUrl = "http://localhost:8080"
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 
@@ -21,11 +21,7 @@ export class UsuarioService {
     })
   }
 
-  insert(usuario: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>(this.baseUrl, usuario)
-  }
-
-  findAll(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(this.baseUrl)
+  findAllMarcasByType(tipo: string): Observable<VeiculoMarcas[]> {
+    return this.http.get<VeiculoMarcas[]>(`${this.baseUrl}/${tipo}/marcas`)
   }
 }

@@ -67,13 +67,13 @@ public class UsuarioResource {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<List<UsuarioDTO>> findAll() {
+	public ResponseEntity<List<Usuario>> findAll() {
 		
 		List<Usuario> list = service.findAll();
 		
-		List<UsuarioDTO> listDto = list.stream().map(obj -> new UsuarioDTO(obj)).collect(Collectors.toList());
+//		List<UsuarioDTO> listDto = list.stream().map(obj -> new UsuarioDTO(obj)).collect(Collectors.toList());
 		
-		return ResponseEntity.ok().body(listDto);
+		return ResponseEntity.ok().body(list);
 				
 	}
 	
