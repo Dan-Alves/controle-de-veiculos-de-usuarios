@@ -24,14 +24,14 @@ public class Usuario implements Serializable {
 	private Long id;
 	private String nome;
 	
-	@JsonIgnore
 	@Column(unique=true)
 	private String email;
 	
-	@JsonIgnore
 	@Column(unique=true)
 	private String cpf;
 	private String nascimento;
+	
+	private String telefone;
 
 	@JsonManagedReference
 	@OneToMany(mappedBy="usuario")
@@ -43,6 +43,17 @@ public class Usuario implements Serializable {
 		this.nome = nome;
 		this.nascimento = nascimento;
 	}
+	
+	public Usuario(Long id, String nome, String email, String cpf, String telefone) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.cpf = cpf;
+		this.telefone = telefone;
+	}
+
+
 
 	public Usuario() {
 		super();
@@ -119,6 +130,14 @@ public class Usuario implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 	
 }

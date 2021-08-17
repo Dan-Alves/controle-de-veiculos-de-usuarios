@@ -31,16 +31,16 @@ public class ControleVeiculosDeUsuariosApplication implements CommandLineRunner 
 	public void run(String... args) throws Exception {
 		
 		//Inserindo dados
-//		Usuario u1 = new Usuario(null, "João", "28/02/1994");
-//		Veiculo v1 = new Veiculo(null, "Honda", "Fit", "2011", u1);
-//		Veiculo v2 = new Veiculo(null, "Fiat", "Uno", "2012", u1);
-//			
-//		//Associação
-//		u1.getVeiculos().addAll(Arrays.asList(v1, v2));
-//				
-//		//Salvando
-//		veiculoRepository.saveAll(Arrays.asList(v1, v2));
-//		usuarioRepository.saveAll(Arrays.asList(u1));
+		Usuario u1 = new Usuario(null, "João", "28/02/1994");
+		Veiculo v1 = new Veiculo(null, "Honda", "Fit", "2011", u1);
+		Veiculo v2 = new Veiculo(null, "Fiat", "Uno", "2012", u1);
+			
+		//Associação
+		u1.getVeiculos().addAll(Arrays.asList(v1, v2));
+				
+		//Salvando
+		veiculoRepository.saveAll(Arrays.asList(v1, v2));
+		usuarioRepository.saveAll(Arrays.asList(u1));
 		
 
 	}

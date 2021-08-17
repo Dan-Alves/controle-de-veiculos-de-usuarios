@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.danielalves.cvu.domain.Usuario;
 import com.danielalves.cvu.domain.Veiculo;
 import com.danielalves.cvu.repositories.UsuarioRepository;
 import com.danielalves.cvu.repositories.VeiculoRepository;
+import com.danielalves.cvu.services.exceptions.DataIntegrityException;
 import com.danielalves.cvu.services.exceptions.ObjectNotFoundException;
 
 @Service
@@ -41,5 +43,19 @@ public class VeiculoService {
 		return repo.findAll();
 	}
 	
+	public Veiculo update(Veiculo obj) {
+		find(obj.getId());
+		return repo.save(obj);
+	}
+	
+	public void delete(Long id) {
+		find(id);
+		try {
+			repo.deleteById(id);
+		} catch(DataIntegrityViolationException e) {
+			throw new DataIntegrityException("Não foi possível deletar veículo!");
+		}
+		
+	}	
 
 }
