@@ -16,7 +16,7 @@ public interface VeiculoClient {
 	 public List<Modelos> getModelos(@PathVariable("tipo") String tipo, 
 			 @PathVariable("codMarca") String codMarca);
 	 
-	 @GetMapping("/{tipo}/marcas/{codMarca}/modelos/{codModelo}/anos/")
+	 @GetMapping("/{tipo}/marcas/{codMarca}/modelos/{codModelo}/anos")
 	 public List<Anos> getAnos(@PathVariable("tipo") String tipo, 
 			 @PathVariable("codMarca") String codMarca, 
 			 @PathVariable("codModelo") String codModelo);

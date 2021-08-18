@@ -24,4 +24,8 @@ export class VeiculoService {
   findAllMarcasByType(tipo: string): Observable<VeiculoMarcas[]> {
     return this.http.get<VeiculoMarcas[]>(`${this.baseUrl}/${tipo}/marcas`)
   }
+
+  findAllAnos(tipo: string, codMarca: string, codModelo: string): Observable<VeiculoMarcas[]> {
+    return this.http.get<VeiculoMarcas[]>(`${this.baseUrl}/${tipo}/marcas/${codMarca}/modelos/${codModelo}/anos`)
+  }
 }

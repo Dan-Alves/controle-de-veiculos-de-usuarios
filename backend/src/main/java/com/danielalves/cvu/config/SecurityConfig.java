@@ -32,7 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/auth/**",
 			"/veiculos/**",
 			"/usuarios/**",
-			"/carros/**"
+			"/carros/**",
+			"/motos/**"
 	};
 
 	private static final String[] PUBLIC_MATCHERS_POST = {

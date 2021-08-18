@@ -30,9 +30,11 @@ import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import {MatSelectModule} from '@angular/material/select';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { registerLocaleData } from '@angular/common';
 import localeBR from '@angular/common/locales/br';
@@ -71,7 +73,8 @@ registerLocaleData(localeBR);
     MatSortModule,
     MatSelectModule,
     MatProgressSpinnerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
