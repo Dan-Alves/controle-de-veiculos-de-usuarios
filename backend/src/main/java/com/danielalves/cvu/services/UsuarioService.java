@@ -20,8 +20,14 @@ public class UsuarioService {
 	
 	@Autowired
 	private UsuarioRepository repo;
-
+	
 	public Usuario find(Long id) {
+		Optional<Usuario> obj = repo.findById(id);
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+			"Objeto não encontrado! Id: " + id));
+	}
+	
+	public Usuario findVeiculos(Long id) {
 		Optional<Usuario> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 			"Objeto não encontrado! Id: " + id));
@@ -55,6 +61,10 @@ public class UsuarioService {
 		return repo.findAll();
 	}
 	
+	public Optional<Usuario> findAllVeiculos(Long id) {
+		return repo.findById(id);
+	}
+		
 	public Page<Usuario> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);

@@ -2,6 +2,7 @@ package com.danielalves.cvu.resources;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.danielalves.cvu.domain.Usuario;
+import com.danielalves.cvu.domain.Veiculo;
 import com.danielalves.cvu.dto.UsuarioDTO;
 import com.danielalves.cvu.services.UsuarioService;
 
@@ -33,7 +35,7 @@ public class UsuarioResource {
 		return ResponseEntity.ok().body(obj);
 				
 	}
-	
+		
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Usuario> insert(@RequestBody Usuario obj) {
 		
@@ -67,12 +69,23 @@ public class UsuarioResource {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<Usuario>> findAll() {
-		
+				
 		List<Usuario> list = service.findAll();
 		
 //		List<UsuarioDTO> listDto = list.stream().map(obj -> new UsuarioDTO(obj)).collect(Collectors.toList());
 		
 		return ResponseEntity.ok().body(list);
+				
+	}
+	
+	@RequestMapping(value="/{id}/veiculos", method=RequestMethod.GET)
+	public ResponseEntity<List<Veiculo>> findAllVeiculos(@PathVariable Long id) {
+		
+		Usuario usu = service.find(id);
+		
+		List<Veiculo> listDto = usu.getVeiculos();
+		
+		return ResponseEntity.ok().body(listDto);
 				
 	}
 	

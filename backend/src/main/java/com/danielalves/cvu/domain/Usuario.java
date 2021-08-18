@@ -52,8 +52,6 @@ public class Usuario implements Serializable {
 		this.telefone = telefone;
 	}
 
-
-
 	public Usuario() {
 		super();
 	}

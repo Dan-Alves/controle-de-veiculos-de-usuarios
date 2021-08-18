@@ -1,3 +1,4 @@
+import { VeiculoClienteReadComponent } from './components/veiculo/veiculo-cliente-read/veiculo-cliente-read.component';
 import { VeiculoFipeComponent } from './views/veiculo-fipe/veiculo-fipe.component';
 import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
 import { UsuarioCrudComponent } from './views/usuario-crud/usuario-crud.component';
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: "veiculos",
     component: VeiculoFipeComponent
+  },
+  {
+    path: "veiculos/view/:id",
+    component: VeiculoClienteReadComponent
   }
 
   // {

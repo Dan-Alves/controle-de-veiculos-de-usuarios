@@ -1,6 +1,7 @@
 import { UsuarioService } from './../usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../usuario.model';
+import { VeiculoService } from '../../veiculo/veiculo.service';
 
 @Component({
   selector: 'app-usuario-read',

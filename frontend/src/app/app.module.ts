@@ -38,6 +38,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { registerLocaleData } from '@angular/common';
 import localeBR from '@angular/common/locales/br';
+import { VeiculoClienteReadComponent } from './components/veiculo/veiculo-cliente-read/veiculo-cliente-read.component';
 
 registerLocaleData(localeBR);
 
@@ -52,7 +53,8 @@ registerLocaleData(localeBR);
     UsuarioCreateComponent,
     UsuarioReadComponent,
     VeiculoReadComponent,
-    VeiculoFipeComponent
+    VeiculoFipeComponent,
+    VeiculoClienteReadComponent
   ],
   imports: [
     BrowserModule,
