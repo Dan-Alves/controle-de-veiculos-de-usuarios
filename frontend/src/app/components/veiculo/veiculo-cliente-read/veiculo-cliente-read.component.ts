@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class VeiculoClienteReadComponent implements OnInit {
 
   veiculos: Veiculo[] = [];
-  displayedColumns = ['marca', 'modelo', 'ano', 'rodizioAtivo']
+  displayedColumns = ['marca', 'modelo', 'ano', 'rodizioAtivo', 'action']
   id: any
 
   constructor(private veiculoService: VeiculoService,

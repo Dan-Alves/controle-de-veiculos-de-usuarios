@@ -5,6 +5,7 @@ import { UsuarioCrudComponent } from './views/usuario-crud/usuario-crud.componen
 import { HomeComponent } from './views/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: "veiculos/view/:id",
     component: VeiculoClienteReadComponent
+  },
+  {
+    path: "usuarios/update/:id",
+    component: UsuarioUpdateComponent
   }
 
   // {

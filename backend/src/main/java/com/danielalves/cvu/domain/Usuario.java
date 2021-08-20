@@ -36,6 +36,12 @@ public class Usuario implements Serializable {
 	@OneToMany(mappedBy="usuario")
 	private List<Veiculo> veiculos = new ArrayList<>();
 
+	public Usuario(Long id, String nome) {
+		super();
+		this.id = id;
+		this.nome = nome;
+	}
+	
 	public Usuario(Long id, String nome, String nascimento) {
 		super();
 		this.id = id;
@@ -43,13 +49,14 @@ public class Usuario implements Serializable {
 		this.nascimento = nascimento;
 	}
 	
-	public Usuario(Long id, String nome, String email, String cpf, String telefone) {
+	public Usuario(Long id, String nome, String email, String cpf, String telefone, String nascimento) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
 		this.telefone = telefone;
+		this.nascimento = nascimento;
 	}
 
 	public Usuario() {

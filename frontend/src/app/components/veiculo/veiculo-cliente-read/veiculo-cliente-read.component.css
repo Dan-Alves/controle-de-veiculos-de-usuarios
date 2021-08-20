@@ -1,3 +1,31 @@
 table {
     width: 100%;
 }
+
+.edit{
+    margin-right: 15px;
+  }
+  
+  .delete{
+    margin-right: 15px;
+  }
+  
+  .add{
+    margin-right: 15px;
+  }
+  
+  .edit > i {
+    color: #26d95c;
+  }
+  
+  .delete > i {
+    color: #e35e6b;
+  }
+  
+  .view {
+    color: #040504;
+  }
+
+button {
+    margin-bottom: 28px;
+}

@@ -4,5 +4,5 @@ export interface Usuario {
     cpf: string;
     email: string;
     telefone: string;
-    nascimento: string;
+    nascimento: string | Date;
 }
