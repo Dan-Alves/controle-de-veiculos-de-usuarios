@@ -13,7 +13,6 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sun.istack.NotNull;
 
 @Entity
 public class Veiculo implements Serializable {
@@ -25,8 +24,6 @@ public class Veiculo implements Serializable {
 	private Long id;
 	private String marca;
 	private String modelo;
-	
-	@NotNull
 	private String ano;
 	
 	@JsonIgnoreProperties
@@ -39,6 +36,14 @@ public class Veiculo implements Serializable {
 
 	public Veiculo() {
 		super();
+	}
+	
+	public Veiculo(Long id, String marca, String modelo, String ano) {
+		super();
+		this.id = id;
+		this.marca = marca;
+		this.modelo = modelo;
+		this.ano = ano;
 	}
 	
 	public Veiculo(Long id, String marca, String modelo, String ano, Usuario usuario) {

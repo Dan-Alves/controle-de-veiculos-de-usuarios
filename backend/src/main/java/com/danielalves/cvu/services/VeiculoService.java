@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.danielalves.cvu.domain.Usuario;
 import com.danielalves.cvu.domain.Veiculo;
+import com.danielalves.cvu.dto.VeiculoNewDTO;
 import com.danielalves.cvu.repositories.UsuarioRepository;
 import com.danielalves.cvu.repositories.VeiculoRepository;
 import com.danielalves.cvu.services.exceptions.DataIntegrityException;
@@ -44,8 +45,9 @@ public class VeiculoService {
 	}
 	
 	public Veiculo update(Veiculo obj) {
-		find(obj.getId());
-		return repo.save(obj);
+		Veiculo newObj = find(obj.getId());
+		updateData(newObj, obj);
+		return repo.save(newObj);
 	}
 	
 	public void delete(Long id) {
@@ -57,5 +59,15 @@ public class VeiculoService {
 		}
 		
 	}	
+	
+	public Veiculo fromDTO(VeiculoNewDTO objDto) {
+		return new Veiculo(objDto.getId(), objDto.getMarca(), objDto.getModelo(), objDto.getAno());
+	}
+	
+	private void updateData(Veiculo newObj, Veiculo obj) {
+		newObj.setMarca(obj.getMarca());
+		newObj.setModelo(obj.getModelo());
+		newObj.setAno(obj.getAno());
+	}
 
 }

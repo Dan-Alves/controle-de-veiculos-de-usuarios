@@ -15,6 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.danielalves.cvu.domain.Veiculo;
 import com.danielalves.cvu.dto.VeiculoDTO;
+import com.danielalves.cvu.dto.VeiculoNewDTO;
 import com.danielalves.cvu.services.VeiculoService;
 
 @RestController
@@ -28,7 +29,7 @@ public class VeiculoResource {
 	public ResponseEntity<Veiculo> find(@PathVariable Long id) {
 		
 		Veiculo obj = service.find(id);
-		Veiculo.verificaRodizio(obj);
+//		Veiculo.verificaRodizio(obj);
 		return ResponseEntity.ok().body(obj);
 				
 	}
@@ -65,9 +66,11 @@ public class VeiculoResource {
 				
 	}
 	
+	
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Veiculo obj, @PathVariable Long id) {
+	public ResponseEntity<Void> update(@RequestBody VeiculoNewDTO objDto, @PathVariable Long id) {
 		
+		Veiculo obj = service.fromDTO(objDto);
 		obj.setId(id);
 		obj = service.update(obj);
 		

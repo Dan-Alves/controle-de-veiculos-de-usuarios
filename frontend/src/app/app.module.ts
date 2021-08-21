@@ -40,6 +40,7 @@ import { registerLocaleData } from '@angular/common';
 import localeBR from '@angular/common/locales/br';
 import { VeiculoClienteReadComponent } from './components/veiculo/veiculo-cliente-read/veiculo-cliente-read.component';
 import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
+import { VeiculoClienteUpdateComponent } from './components/veiculo/veiculo-cliente-update/veiculo-cliente-update.component';
 
 registerLocaleData(localeBR);
 
@@ -56,7 +57,8 @@ registerLocaleData(localeBR);
     VeiculoReadComponent,
     VeiculoFipeComponent,
     VeiculoClienteReadComponent,
-    UsuarioUpdateComponent
+    UsuarioUpdateComponent,
+    VeiculoClienteUpdateComponent
   ],
   imports: [
     BrowserModule,

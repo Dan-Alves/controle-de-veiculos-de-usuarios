@@ -14,14 +14,6 @@ export class UsuarioService {
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 
-  // showMessage(msg: string) : void {
-  //   this.snackBar.open(msg, 'Fechar', {
-  //     duration: 2000,
-  //     horizontalPosition: "right",
-  //     verticalPosition: "top"
-  //   })
-  // }
-
   showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, "Fechar", {
       duration: 2000,
@@ -44,11 +36,11 @@ export class UsuarioService {
   }
 
   update(obj: Usuario): Observable<Usuario>{
-    // return this.http.put<Usuario>(`${this.baseUrl}/${obj.id}`, obj).pipe(
-    //   map((obj) => obj),
-    //   catchError((e) => this.errorHandler(e))
-    // );
-    return this.http.put<Usuario>(`${this.baseUrl}/${obj.id}`, obj)
+    return this.http.put<Usuario>(`${this.baseUrl}/${obj.id}`, obj).pipe(
+      map((obj) => obj),
+      catchError((e) => this.errorHandler(e))
+    );
+    // return this.http.put<Usuario>(`${this.baseUrl}/${obj.id}`, obj)
   }
 
   errorHandler(e: any): Observable<any> {
