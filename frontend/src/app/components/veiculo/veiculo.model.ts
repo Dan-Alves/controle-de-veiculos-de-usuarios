@@ -3,5 +3,5 @@ export interface Veiculo {
     marca: string;
     modelo: string;
     ano: string;
-    rodizioAtivo: boolean;
+    rodizioAtivo?: boolean;
 }

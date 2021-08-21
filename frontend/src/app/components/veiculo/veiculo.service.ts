@@ -52,5 +52,9 @@ export class VeiculoService {
   findById(id: number): Observable<Veiculo> {
     return this.http.get<Veiculo>(`${this.baseUrl}/veiculos/${id}`)
   }
+
+  insert(obj: Veiculo, usuario_id: number): Observable<Veiculo> {
+    return this.http.post<Veiculo>(`${this.baseUrl}/veiculos/${usuario_id}`, obj)
+  }
   
 }

@@ -7,6 +7,7 @@ import { HomeComponent } from './views/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
+import { VeiculoClienteCreateComponent } from './components/veiculo/veiculo-cliente-create/veiculo-cliente-create.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: "veiculos/update/:id",
     component: VeiculoClienteUpdateComponent
+  },
+  {
+    path: "veiculos/create/:id",
+    component: VeiculoClienteCreateComponent
   }
 ];
 

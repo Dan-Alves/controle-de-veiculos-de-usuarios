@@ -1,4 +1,4 @@
-<button mat-raised-button color="primary">
+<button mat-raised-button color="primary" (click)="navigateToVeiculoCreate()">
   Inserir
 </button>
 <div class="mat-elevation-z4">
@@ -33,20 +33,10 @@
                     edit
                 </i>
             </a>
-            <a routerLink="/veiculos/insert/{{ row.id }}" class="add">
-              <i class="material-icons">
-                  add
-              </i>
-            </a>
             <a routerLink="/veiculos/delete/{{ row.id }}" class="delete">
                 <i class="material-icons">
                     delete
                 </i>
-            </a>
-            <a routerLink="/veiculos/view/{{ row.id }}/" class="view">
-              <i class="material-icons">
-                  visibility
-              </i>
             </a>
         </td>
       </ng-container>

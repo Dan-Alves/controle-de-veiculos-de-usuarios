@@ -13,6 +13,7 @@ export class VeiculoClienteReadComponent implements OnInit {
   veiculos: Veiculo[] = [];
   displayedColumns = ['marca', 'modelo', 'ano', 'rodizioAtivo', 'action']
   id: any
+  usuario_id: any
 
   constructor(private veiculoService: VeiculoService,
     private router: Router,
@@ -24,6 +25,11 @@ export class VeiculoClienteReadComponent implements OnInit {
       .subscribe(veiculos => {
         this.veiculos = veiculos
       })
+  }
+
+  navigateToVeiculoCreate(): void {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.router.navigate([`/veiculos/create/${this.id}`]);
   }
 
 }
