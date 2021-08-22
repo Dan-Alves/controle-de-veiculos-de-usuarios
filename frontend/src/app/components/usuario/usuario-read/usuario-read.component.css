@@ -25,3 +25,10 @@ table {
 .view {
   color: #040504;
 }
+
+@media (max-width: 768px) {
+  table,
+  ng-container {
+    min-width: 950px;
+  }
+}

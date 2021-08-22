@@ -1,6 +1,56 @@
+<mat-toolbar *ngIf="(isHandset | async)!.matches">
+    <button
+        type="button"
+        arial-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="(isHandset | async)!.matches">                
+        <mat-icon arial-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+</mat-toolbar>
+
 <mat-sidenav-container class="container">
-    <mat-sidenav class="sidenav" mode="side" opened fixedInViewport="true" fixedTopGap="64">
-        <mat-nav-list class="nav-list">
+
+    <mat-sidenav 
+        fixedTopGap="56"
+        #drawer
+        class="sidenav"
+        [ngClass]="{hidden: (isHandset | async)!.matches}"
+        fixedInViewport="true"
+        [attr.role]="isHandset ? 'dialog' : 'navigation'"
+        [mode]="(isHandset | async)!.matches ? 'over' : 'side'"
+        [opened]="!(isHandset | async)!.matches">
+
+        <mat-nav-list class="nav-list" *ngIf="(isHandset | async)!.matches">
+            <span class="spacer"></span>
+            <a mat-list-item routerLink="/" (click)="drawer.toggle()">
+                <i class="material-icons">
+                    home
+                </i>
+                Início
+            </a>
+            <a mat-list-item routerLink="/usuarios" (click)="drawer.toggle()">
+                <i class="material-icons">
+                    people
+                </i>
+                Clientes
+            </a>
+            <a mat-list-item routerLink="/veiculos" (click)="drawer.toggle()">
+                <i class="material-icons">
+                    drive_eta
+                </i>
+                Fipe
+            </a>
+        </mat-nav-list>
+
+        <mat-nav-list class="nav-list" *ngIf="!(isHandset | async)!.matches">
+            <span class="spacer"></span>
+            <a mat-list-item routerLink="/">
+                <i class="material-icons">
+                    home
+                </i>
+                Início
+            </a>
             <a mat-list-item routerLink="/usuarios">
                 <i class="material-icons">
                     people
@@ -14,8 +64,13 @@
                 Fipe
             </a>
         </mat-nav-list>
+
     </mat-sidenav>
+
     <mat-sidenav-content class="content">
+
         <router-outlet></router-outlet>
+
     </mat-sidenav-content>
+
 </mat-sidenav-container>

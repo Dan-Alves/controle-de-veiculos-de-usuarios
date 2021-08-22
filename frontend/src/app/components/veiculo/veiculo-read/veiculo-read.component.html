@@ -1,34 +1,39 @@
-<mat-form-field appearance="fill">
-    <mat-label>Tipo</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let tipo of tipos" [value]="tipo.nome">
-        {{tipo.nome}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+<p>
+    <mat-card-title>Buscar na tabela FIPE</mat-card-title>
+</p>
+<form>
+    <mat-form-field appearance="fill">
+        <mat-label>Tipo</mat-label>
+        <mat-select>
+        <mat-option *ngFor="let tipo of tipos" [value]="tipo.nome">
+            {{tipo.nome}}
+        </mat-option>
+        </mat-select>
+    </mat-form-field>
 
-<mat-form-field appearance="fill">
-    <mat-label>Marca</mat-label>
-    <mat-select (selectChange)="findMarcas()">
-        <mat-option></mat-option>
-        <mat-option *ngFor="let marca of marcas" [value]="marca">{{marca.nome}}</mat-option>
-    </mat-select>
-</mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Marca</mat-label>
+        <mat-select (selectChange)="findMarcas()">
+            <mat-option></mat-option>
+            <mat-option *ngFor="let marca of marcas" [value]="marca">{{marca.nome}}</mat-option>
+        </mat-select>
+    </mat-form-field>
 
-<mat-form-field appearance="fill">
-    <mat-label>Modelo</mat-label>
-    <mat-select (selectChange)="findModelos()">
-        <mat-option></mat-option>
-        <mat-option *ngFor="let ano of anos" [value]="ano">{{ano.nome}}</mat-option>
-    </mat-select>
-</mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Modelo</mat-label>
+        <mat-select (selectChange)="findModelos()">
+            <mat-option></mat-option>
+            <mat-option *ngFor="let ano of anos" [value]="ano">{{ano.nome}}</mat-option>
+        </mat-select>
+    </mat-form-field>
 
-<mat-form-field appearance="fill">
-    <mat-label>Ano</mat-label>
-    <mat-select (selectChange)="findAnos()">
-        <mat-option></mat-option>
-        <mat-option *ngFor="let ano of anos" [value]="ano">{{ano.nome}}</mat-option>
-    </mat-select>
-</mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Ano</mat-label>
+        <mat-select (selectChange)="findAnos()">
+            <mat-option></mat-option>
+            <mat-option *ngFor="let ano of anos" [value]="ano">{{ano.nome}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</form>
 
-<button color="primary" mat-raised-button>Buscar</button>
+<button color="primary" mat-raised-button (click)="buscar()">Buscar</button>

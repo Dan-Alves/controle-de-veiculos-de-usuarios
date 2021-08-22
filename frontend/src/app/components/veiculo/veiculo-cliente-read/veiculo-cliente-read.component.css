@@ -29,3 +29,10 @@ table {
 button {
     margin-bottom: 28px;
 }
+
+@media (max-width: 768px) {
+  table,
+  ng-container {
+    min-width: 500px;
+  }
+}

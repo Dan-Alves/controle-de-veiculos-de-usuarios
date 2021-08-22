@@ -11,3 +11,14 @@ button {
     height: 50px;
     bottom: 8px;
 }
+
+@media screen and (max-width: 768px) {
+    mat-form-field {
+        width: 100%;
+    }
+
+    button {
+        margin-top: 15px;
+        width: 100%;
+    }
+}

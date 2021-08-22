@@ -47,4 +47,7 @@ export class VeiculoReadComponent implements OnInit {
       })
   }
 
+  buscar() {
+  }
+
 }

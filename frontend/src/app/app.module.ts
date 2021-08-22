@@ -33,6 +33,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {MatIconModule} from '@angular/material/icon';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -42,6 +43,8 @@ import { VeiculoClienteReadComponent } from './components/veiculo/veiculo-client
 import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
 import { VeiculoClienteUpdateComponent } from './components/veiculo/veiculo-cliente-update/veiculo-cliente-update.component';
 import { VeiculoClienteCreateComponent } from './components/veiculo/veiculo-cliente-create/veiculo-cliente-create.component';
+
+import {LayoutModule} from '@angular/cdk/layout';
 
 registerLocaleData(localeBR);
 
@@ -82,7 +85,9 @@ registerLocaleData(localeBR);
     MatSelectModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    LayoutModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

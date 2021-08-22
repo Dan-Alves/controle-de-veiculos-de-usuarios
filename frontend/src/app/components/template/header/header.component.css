@@ -7,6 +7,7 @@
     display: flex;
     align-items: center;
     text-decoration: none;
+    margin-left: 10px;
 }
 
 .header .logo {
@@ -14,9 +15,19 @@
 }
 
 .header .title-group {
-    padding-left: 15px;
+    padding-left: 25px;
 }
 
 .header .title-group i {
     padding-right: 5px;
+}
+
+mat-toolbar {
+    max-height: 56px;
+}
+
+@media (max-width: 768px) {
+    mat-toolbar {
+      margin-left: 70px;
+    }
 }
