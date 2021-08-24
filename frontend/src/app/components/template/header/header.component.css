@@ -28,6 +28,10 @@ mat-toolbar {
 
 @media (max-width: 768px) {
     mat-toolbar {
-      margin-left: 70px;
+      margin-left: 30px;
+    }
+
+    .logo {
+        display: none;
     }
 }
