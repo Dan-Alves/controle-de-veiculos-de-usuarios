@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.danielalves.cvu.feign.Anos;
 import com.danielalves.cvu.feign.Infos;
 import com.danielalves.cvu.feign.Marcas;
+import com.danielalves.cvu.feign.Modelo;
 import com.danielalves.cvu.feign.Modelos;
 import com.danielalves.cvu.feign.VeiculoClient;
 
@@ -29,11 +30,16 @@ public class VeiculoRestService{
 	}
 	
 	@GetMapping("/{tipo}/marcas/{codMarca}/modelos")
-	public ResponseEntity<List<Modelos>> getModelos(@PathVariable String tipo, @PathVariable String codMarca) {
+	public Modelo[] getModelos(@PathVariable String tipo, @PathVariable String codMarca) {
 		
-		List<Modelos> info = veiculoClient.getModelos(tipo, codMarca);
-		return info != null ? ResponseEntity.ok().body(info) : ResponseEntity.notFound().build(); 
 		
+		Modelos info = veiculoClient.getModelos(tipo, codMarca);
+		
+		ResponseEntity<Modelos> mod = ResponseEntity.ok().body(info);
+		Modelos m = mod.getBody();
+		Modelo[] mm = m.getModelos();
+		return mm;
+			
 	}
 	
 	@GetMapping("/{tipo}/marcas/{codMarca}/modelos/{codModelo}/anos")

@@ -34,6 +34,7 @@
             <mat-option *ngFor="let ano of anos" [value]="ano">{{ano.nome}}</mat-option>
         </mat-select>
     </mat-form-field>
+
+    <button color="primary" mat-raised-button (click)="buscar()">Buscar</button>
 </form>
 
-<button color="primary" mat-raised-button (click)="buscar()">Buscar</button>
