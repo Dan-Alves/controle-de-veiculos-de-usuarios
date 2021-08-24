@@ -36,9 +36,9 @@ public class VeiculoRestService{
 		Modelos info = veiculoClient.getModelos(tipo, codMarca);
 		
 		ResponseEntity<Modelos> mod = ResponseEntity.ok().body(info);
-		Modelos m = mod.getBody();
-		Modelo[] mm = m.getModelos();
-		return mm;
+		Modelos modelosBody = mod.getBody();
+		Modelo[] modelo = modelosBody.getModelos();
+		return modelo;
 			
 	}
 	

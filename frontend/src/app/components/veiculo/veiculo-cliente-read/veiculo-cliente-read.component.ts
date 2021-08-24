@@ -2,6 +2,7 @@ import { VeiculoService } from './../veiculo.service';
 import { Component, OnInit } from '@angular/core';
 import { Veiculo } from '../veiculo.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HeaderService } from '../../template/header/header.service';
 
 @Component({
   selector: 'app-veiculo-cliente-read',
@@ -17,7 +18,14 @@ export class VeiculoClienteReadComponent implements OnInit {
 
   constructor(private veiculoService: VeiculoService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private headerService: HeaderService) { 
+      headerService.headerData = {
+        title: 'Veículos',
+        icon: 'directions_car',
+        routeUrl: '/veiculos/view/:id'
+      }
+  }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id')

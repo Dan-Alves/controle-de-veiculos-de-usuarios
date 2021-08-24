@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { VeiculoMarcas } from '../marcas.model';
 import { VeiculoAnos } from '../anos.model';
 import { Tipo } from '../tipo.model';
+import { VeiculoModelos } from '../modelos.model';
+import { VeiculoFipe } from '../veiculoFipe.model';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-veiculo-read',
@@ -11,10 +14,17 @@ import { Tipo } from '../tipo.model';
 })
 export class VeiculoReadComponent implements OnInit {
 
+  veiculo: VeiculoFipe[] = []
   marcas: VeiculoMarcas[] = []
+  modelos: VeiculoModelos[] = []
   displayedColumns = ['nome', 'codigo']
-  selected = '';
+  selectedAno = '';
+  selectedMarca = '';
+  selectedModelo = '';
+  selectedTipo = '';
   anos: VeiculoAnos[] = []
+  selected = '';
+  valor!: any
 
   tipos: Tipo[] = [
     {nome: 'carros'},
@@ -25,29 +35,38 @@ export class VeiculoReadComponent implements OnInit {
   constructor(private veiculoService: VeiculoService) { }
 
   ngOnInit(): void {
-    this.findMarcas();
-    this.findAnos();
+    this.findMarcas('carros');
+    this.findModelos('carros', '59');
+    this.findAnos('carros', '59', '5940');
   }
 
-  findMarcas() {
-    this.veiculoService.findAllMarcasByType('carros')
+  findMarcas(selectedTipo: string) {
+    this.veiculoService.findAllMarcasByType(selectedTipo)
     .subscribe(marcas => {
       this.marcas = marcas
     })
   }
 
-  findModelos() {
-
+  findModelos(selectedTipo: string, selectedMarca: string) {
+    this.veiculoService.findAllModelos(selectedTipo, selectedMarca)
+      .subscribe(modelos => {
+        this.modelos = modelos
+      })
   }
 
-  findAnos() {
-    this.veiculoService.findAllAnos('carros', '25', '1241')
+  findAnos(selectedTipo: string, selectedMarca: string, selectedModelo: string) {
+    this.veiculoService.findAllAnos(selectedTipo, selectedMarca, selectedModelo)
       .subscribe(anos => {
         this.anos = anos
       })
   }
 
-  buscar() {
+  buscar(tipos: string, codMarca: string, codModelo: string, codAno: string) {
+    this.veiculoService.findFipe(tipos, codMarca, codModelo, codAno)
+      .subscribe(veiculo => {
+        this.veiculo = veiculo
+        console.log(veiculo)
+      })
   }
 
 }

@@ -5,6 +5,8 @@ import { Observable, EMPTY } from 'rxjs';
 import { VeiculoMarcas } from './marcas.model';
 import { Veiculo } from './veiculo.model';
 import { map, catchError } from "rxjs/operators";
+import { VeiculoModelos } from './modelos.model';
+import { VeiculoFipe } from './veiculoFipe.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +31,16 @@ export class VeiculoService {
     return this.http.get<VeiculoMarcas[]>(`${this.baseUrl}/${tipo}/marcas`)
   }
 
+  findAllModelos(tipo: string, codMarca: string): Observable<VeiculoModelos[]> {
+    return this.http.get<VeiculoMarcas[]>(`${this.baseUrl}/${tipo}/marcas/${codMarca}/modelos`)
+  }
+
   findAllAnos(tipo: string, codMarca: string, codModelo: string): Observable<VeiculoMarcas[]> {
     return this.http.get<VeiculoMarcas[]>(`${this.baseUrl}/${tipo}/marcas/${codMarca}/modelos/${codModelo}/anos`)
+  }
+
+  findFipe(tipo: string, codMarca: string, codModelo: string, codAno: string): Observable<VeiculoFipe[]> {
+    return this.http.get<VeiculoFipe[]>(`${this.baseUrl}/${tipo}/marcas/${codMarca}/modelos/${codModelo}/anos/${codAno}`)
   }
 
   findAllVeiculos(id: number): Observable<Veiculo[]> {
