@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
 import { VeiculoClienteCreateComponent } from './components/veiculo/veiculo-cliente-create/veiculo-cliente-create.component';
 import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usuario-delete.component';
+import { VeiculoClienteDeleteComponent } from './components/veiculo/veiculo-cliente-delete/veiculo-cliente-delete.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: "usuarios/delete/:id",
     component: UsuarioDeleteComponent
+  },
+  {
+    path: "veiculos/delete/:id",
+    component: VeiculoClienteDeleteComponent
   }
 ];
 
