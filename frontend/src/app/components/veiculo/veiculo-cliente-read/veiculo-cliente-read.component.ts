@@ -1,8 +1,8 @@
-import { VeiculoService } from './../veiculo.service';
+import { VeiculoService } from '../../../services/veiculo.service';
 import { Component, OnInit } from '@angular/core';
-import { Veiculo } from '../veiculo.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderService } from '../../template/header/header.service';
+import { Veiculo } from 'src/app/models/veiculo.model';
 
 @Component({
   selector: 'app-veiculo-cliente-read',

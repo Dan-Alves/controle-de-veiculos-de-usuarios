@@ -1,9 +1,9 @@
-import { Usuario } from './usuario.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, EMPTY } from 'rxjs';
 import { map, catchError } from "rxjs/operators";
+import { Usuario } from '../models/usuario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -40,11 +40,14 @@ export class UsuarioService {
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );
-    // return this.http.put<Usuario>(`${this.baseUrl}/${obj.id}`, obj)
   }
 
   errorHandler(e: any): Observable<any> {
     this.showMessage("Ocorreu um erro!", true);
     return EMPTY;
+  }
+
+  delete(id: string): Observable<Usuario> {
+    return this.http.delete<Usuario>(`${this.baseUrl}/${id}`)
   }
 }

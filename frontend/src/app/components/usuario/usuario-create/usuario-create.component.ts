@@ -1,7 +1,7 @@
-import { UsuarioService } from './../usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Usuario } from '../usuario.model';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { Usuario } from '../../../models/usuario.model';
 
 @Component({
   selector: 'app-usuario-create',

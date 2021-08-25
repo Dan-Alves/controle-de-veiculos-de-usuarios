@@ -1,0 +1,34 @@
+<mat-card>
+    <mat-card-title class="title">Deletar Usuário</mat-card-title>
+    
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Nome"
+                [value]="usuario.nome" name="nome" disabled>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="CPF"
+                [value]="usuario.cpf" name="cpf" disabled>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Email"
+                [value]="usuario.email" name="email" disabled>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Telefone"
+                [value]="usuario.telefone" name="telefone" disabled>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="nascimento"
+                [value]="usuario.nascimento" name="nascimento" disabled>
+        </mat-form-field>
+    </form>
+
+    <button mat-raised-button (click)="deleteUsuario()" color="warn">
+        Deletar
+    </button>
+    
+    <button mat-raised-button (click)="cancel()">
+        Cancelar
+    </button>
+</mat-card>

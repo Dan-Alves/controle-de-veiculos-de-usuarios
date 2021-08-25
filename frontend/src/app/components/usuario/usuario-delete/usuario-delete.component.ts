@@ -1,14 +1,14 @@
-import { Usuario } from '../../../models/usuario.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Usuario } from 'src/app/models/usuario.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
-  selector: 'app-usuario-update',
-  templateUrl: './usuario-update.component.html',
-  styleUrls: ['./usuario-update.component.css']
+  selector: 'app-usuario-delete',
+  templateUrl: './usuario-delete.component.html',
+  styleUrls: ['./usuario-delete.component.css']
 })
-export class UsuarioUpdateComponent implements OnInit {
+export class UsuarioDeleteComponent implements OnInit {
 
   usuario!: Usuario;
   id: any
@@ -25,10 +25,10 @@ export class UsuarioUpdateComponent implements OnInit {
       })
   }
 
-  updateUsuario(usuario: Usuario): void {
-    this.usuarioService.update(usuario)
+  deleteUsuario(): void {
+    this.usuarioService.delete(this.id)
       .subscribe(() => {
-        this.usuarioService.showMessage("Usuário atualizado com sucesso!");
+        this.usuarioService.showMessage("Usuário deletado com sucesso!");
         this.router.navigate(["/usuarios"]);
       })
   }

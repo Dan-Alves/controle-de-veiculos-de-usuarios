@@ -1,10 +1,10 @@
-import { VeiculoService } from './../veiculo.service';
+import { VeiculoService } from '../../../services/veiculo.service';
 import { Component, OnInit } from '@angular/core';
-import { VeiculoMarcas } from '../marcas.model';
-import { VeiculoAnos } from '../anos.model';
-import { Tipo } from '../tipo.model';
-import { VeiculoModelos } from '../modelos.model';
-import { VeiculoFipe } from '../veiculoFipe.model';
+import { VeiculoAnos } from '../../../models/anos.model';
+import { VeiculoFipe } from 'src/app/models/veiculoFipe.model';
+import { VeiculoMarcas } from 'src/app/models/marcas.model';
+import { VeiculoModelos } from 'src/app/models/modelos.model';
+import { Tipo } from 'src/app/models/tipo.model';
 
 @Component({
   selector: 'app-veiculo-read',
@@ -40,7 +40,7 @@ export class VeiculoReadComponent implements OnInit {
   }
 
   findMarcas(selectedTipo: string) {
-    this.veiculoService.findAllMarcasByType(selectedTipo)
+    this.veiculoService.findAllMarcas(selectedTipo)
     .subscribe(marcas => {
       this.marcas = marcas
     })

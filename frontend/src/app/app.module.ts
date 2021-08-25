@@ -45,6 +45,8 @@ import { VeiculoClienteUpdateComponent } from './components/veiculo/veiculo-clie
 import { VeiculoClienteCreateComponent } from './components/veiculo/veiculo-cliente-create/veiculo-cliente-create.component';
 
 import {LayoutModule} from '@angular/cdk/layout';
+import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usuario-delete.component';
+import { VeiculoClienteDeleteComponent } from './components/veiculo/veiculo-cliente-delete/veiculo-cliente-delete.component';
 
 registerLocaleData(localeBR);
 
@@ -63,7 +65,9 @@ registerLocaleData(localeBR);
     VeiculoClienteReadComponent,
     UsuarioUpdateComponent,
     VeiculoClienteUpdateComponent,
-    VeiculoClienteCreateComponent
+    VeiculoClienteCreateComponent,
+    UsuarioDeleteComponent,
+    VeiculoClienteDeleteComponent
   ],
   imports: [
     BrowserModule,

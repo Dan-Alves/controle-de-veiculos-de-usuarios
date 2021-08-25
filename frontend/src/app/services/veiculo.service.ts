@@ -2,11 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, EMPTY } from 'rxjs';
-import { VeiculoMarcas } from './marcas.model';
-import { Veiculo } from './veiculo.model';
 import { map, catchError } from "rxjs/operators";
-import { VeiculoModelos } from './modelos.model';
-import { VeiculoFipe } from './veiculoFipe.model';
+import { VeiculoMarcas } from '../models/marcas.model';
+import { VeiculoModelos } from '../models/modelos.model';
+import { Veiculo } from '../models/veiculo.model';
+import { VeiculoFipe } from '../models/veiculoFipe.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,7 @@ import { VeiculoFipe } from './veiculoFipe.model';
 export class VeiculoService {
 
   baseUrl = "http://localhost:8080"
+  baseUrlApi = "https://parallelum.com.br/fipe/api/v1"
   veiculo!: Veiculo;
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
@@ -27,7 +28,7 @@ export class VeiculoService {
     });
   }
 
-  findAllMarcasByType(tipo: string): Observable<VeiculoMarcas[]> {
+  findAllMarcas(tipo: string): Observable<VeiculoMarcas[]> {
     return this.http.get<VeiculoMarcas[]>(`${this.baseUrl}/${tipo}/marcas`)
   }
 
@@ -65,6 +66,10 @@ export class VeiculoService {
 
   insert(obj: Veiculo, usuario_id: number): Observable<Veiculo> {
     return this.http.post<Veiculo>(`${this.baseUrl}/veiculos/${usuario_id}`, obj)
+  }
+
+  delete(id: string): Observable<Veiculo> {
+    return this.http.delete<Veiculo>(`${this.baseUrl}/veiculos/${id}`)
   }
   
 }

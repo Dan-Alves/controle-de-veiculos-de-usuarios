@@ -1,7 +1,7 @@
-import { Veiculo } from './../veiculo.model';
-import { VeiculoService } from './../veiculo.service';
+import { VeiculoService } from '../../../services/veiculo.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Veiculo } from 'src/app/models/veiculo.model';
 
 @Component({
   selector: 'app-veiculo-cliente-update',
