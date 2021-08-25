@@ -5,7 +5,6 @@ import { VeiculoAnos } from '../anos.model';
 import { Tipo } from '../tipo.model';
 import { VeiculoModelos } from '../modelos.model';
 import { VeiculoFipe } from '../veiculoFipe.model';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-veiculo-read',
@@ -14,7 +13,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class VeiculoReadComponent implements OnInit {
 
-  veiculo: VeiculoFipe[] = []
+  veiculo: VeiculoFipe[] = [];
   marcas: VeiculoMarcas[] = []
   modelos: VeiculoModelos[] = []
   displayedColumns = ['nome', 'codigo']
@@ -29,7 +28,7 @@ export class VeiculoReadComponent implements OnInit {
   tipos: Tipo[] = [
     {nome: 'carros'},
     {nome: 'motos'},
-    {nome: 'caminhoes'}
+    {nome: 'caminhoes'},
   ];
 
   constructor(private veiculoService: VeiculoService) { }
@@ -65,7 +64,9 @@ export class VeiculoReadComponent implements OnInit {
     this.veiculoService.findFipe(tipos, codMarca, codModelo, codAno)
       .subscribe(veiculo => {
         this.veiculo = veiculo
-        console.log(veiculo)
+        var obj = JSON.stringify(veiculo)
+        console.log(obj)        
+        this.valor = obj.substring(10, obj.length-2)
       })
   }
 
