@@ -4,10 +4,11 @@
 <form>
     <mat-form-field appearance="fill">
         <mat-label>Tipo</mat-label>
-        <mat-select [(value)]="selectedTipo" >
+        <mat-select [(value)]="selectedTipo">
         <mat-option *ngFor="let tipo of tipos" [value]="tipo.nome" (openedChange)="findMarcas(selectedTipo)">
             {{tipo.nome}}
         </mat-option>
+        <mat-option (openedChange)="findMarcas(selectedTipo)" style="display: none;"></mat-option>
         </mat-select>
     </mat-form-field>
 
@@ -15,14 +16,15 @@
         <mat-label>Marca</mat-label>
         <mat-select [(value)]="selectedMarca" (openedChange)="findMarcas(selectedTipo)">
             <mat-option *ngFor="let marca of marcas" [value]="marca.codigo">{{marca.nome}}</mat-option>
+            <mat-option (openedChange)="findModelos(selectedTipo, selectedMarca)" style="display: none;"></mat-option>
         </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
         <mat-label>Modelo</mat-label>
         <mat-select (openedChange)="findModelos(selectedTipo, selectedMarca)" [(value)]="selectedModelo">
-            <mat-option></mat-option>
             <mat-option *ngFor="let modelo of modelos" [value]="modelo.codigo">{{modelo.nome}}</mat-option>
+            <mat-option (openedChange)="findAnos(selectedTipo, selectedMarca, selectedModelo)" style="display: none;"></mat-option>
         </mat-select>
     </mat-form-field>
 
